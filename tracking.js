@@ -1,37 +1,29 @@
-var mixpanel = require('mixpanel-browserify');
-var configured = false;
 var trackers = {};
 
-function ensureConfigured () {
-    if (!configured) throw new Error("tracking module must be configured with `require('tracking').configure(config)`");
-}
-
-function configure (config) {
-    configured = true;
-
-    if (config.mixpanel) {
-        mixpanel.init(config.mixpanel.key);
-        trackers.mixpanel = mixpanel;
-    }
-}
-
 function identify (userId, userData) {
-    ensureConfigured();
-    if (trackers.mixpanel) {
-        mixpanel.identify(userId);
-        mixpanel.people.set(userData);
-    }
+    Object.keys(trackers).forEach(function (trackerName) {
+        var tracker = trackers[trackerName];
+        if (tracker.identify) {
+            tracker.identify(userId, userData);
+        }
+    });
 }
 
 function track (event, data) {
-    ensureConfigured();
-    if (trackers.mixpanel) {
-        mixpanel.track(event, data || {});
-    }
+    Object.keys(trackers).forEach(function (trackerName) {
+        var tracker = trackers[trackerName];
+        if (tracker.track) {
+            tracker.track(event, data || {});
+        }
+    });
 }
 
 module.exports = {
-    configure: configure,
+    _addTracker: function (name, tracker) {
+        if (trackers[name]) throw new Error('Already have a tracker with name "' + name);
+
+        trackers[name] = tracker;
+    },
     track: track,
     identify: identify
 };
