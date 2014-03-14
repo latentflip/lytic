@@ -1,5 +1,5 @@
 var Lab = require('lab');
-var tracking = require('../tracking');
+var tracking = require('../lytic');
 
 Lab.test('track gets called', function (done) {
     var track = function (event, data) {

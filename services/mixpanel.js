@@ -1,5 +1,6 @@
-var mixpanel = require('mixpanel-browserify');
-var tracking = require('../tracking');
+var tracking = require('../lytic');
+require('./libs/mixpanel-preamble');
+var mixpanel = window.mixpanel;
 
 /*
  * Mixpanel, configuration:

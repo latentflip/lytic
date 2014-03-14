@@ -7,7 +7,7 @@
 ## Usage
 
 ```javascript
-var tracking = require('tracking');
+var tracking = require('lytic');
 require('tracking/services/mixpanel').configure({
     key: "<your mixpanel key>";
 });
@@ -30,7 +30,7 @@ Services should call `tracking._addTracker(name, config)` to register themselves
 ```javascript
 //my-custom-tracker.js
 
-var tracking = require('tracking'); //make relative if actually including in this repo
+var tracking = require('lytic'); //make relative if actually including in this repo
 
 module.exports.configure = function (config) {
     //Export as a configure method for consistency
@@ -56,7 +56,7 @@ module.exports.configure = function (config) {
 Your application will then use it like so:
 
 ```javascript
-var tracking = require('tracking');
+var tracking = require('lytic');
 var custom = require('./my-custom-tracker');
 custom.configure({
     configItem: 'stuff'

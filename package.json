@@ -1,16 +1,13 @@
 {
-  "name": "tracking",
+  "name": "lytic",
   "version": "0.0.1",
   "description": "",
-  "main": "tracking.js",
+  "main": "lytic.js",
   "scripts": {
     "test": "lab"
   },
   "author": "&yet",
   "license": "",
-  "dependencies": {
-    "mixpanel-browserify": "^2.2.2"
-  },
   "devDependencies": {
     "lab": "1.8.0"
   }
