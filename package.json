@@ -10,5 +10,8 @@
   "license": "",
   "devDependencies": {
     "lab": "1.8.0"
+  },
+  "dependencies": {
+    "sinon": "^1.9.1"
   }
 }

@@ -24,6 +24,9 @@ module.exports = {
 
         trackers[name] = tracker;
     },
+    _removeTracker: function (name) {
+        delete trackers[name];
+    },
     track: track,
     identify: identify
 };
