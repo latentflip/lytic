@@ -12,8 +12,10 @@ module.exports.configure = function (config) {
     var UserVoice = uservoicePreamble.init(config.key);
 
     var identify = function (userId, userData) {
-        var data = {};
-        data.id = userId;
+        userData = userData || {};
+        var data = {
+            id: userId
+        };
         if (userData.email) data.email = userData.email;
         if (userData.name) data.name = userData.name;
 
