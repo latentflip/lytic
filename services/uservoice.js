@@ -14,8 +14,8 @@ module.exports.configure = function (config) {
     var identify = function (userId, userData) {
         var data = {};
         data.id = userId;
-        if (userData.email) data.email = userData.email;
-        if (userData.name) data.name = userData.name;
+        // if (userData.email) data.email = userData.email;
+        // if (userData.name) data.name = userData.name;
 
         UserVoice.push(['identify', data]);
     };
