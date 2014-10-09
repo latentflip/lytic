@@ -4,7 +4,7 @@ var mixpanel = window.mixpanel;
 
 /*
  * Mixpanel, configuration:
- * require('tracking/services/mixpanel').configure({
+ * require('lytic/services/mixpanel').configure({
  *   key: "<your mixpanel key>"
  * })
  */

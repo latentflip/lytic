@@ -1,6 +1,7 @@
 var trackers = {};
 
 function identify (userId, userData) {
+    userData = userData || {};
     Object.keys(trackers).forEach(function (trackerName) {
         var tracker = trackers[trackerName];
         if (tracker.identify) {
@@ -10,10 +11,23 @@ function identify (userId, userData) {
 }
 
 function track (event, data) {
+    data = data || {};
     Object.keys(trackers).forEach(function (trackerName) {
         var tracker = trackers[trackerName];
         if (tracker.track) {
-            tracker.track(event, data || {});
+            tracker.track(event, data);
+        }
+    });
+}
+
+function pageView (url, title) {
+    url = url || window.location.toString();
+    title = title || document.title;
+
+    Object.keys(trackers).forEach(function (trackerName) {
+        var tracker = trackers[trackerName];
+        if (tracker.pageView) {
+            tracker.pageView(url, title);
         }
     });
 }
@@ -28,5 +42,6 @@ module.exports = {
         delete trackers[name];
     },
     track: track,
-    identify: identify
+    identify: identify,
+    pageView: pageView
 };

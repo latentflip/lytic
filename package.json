@@ -1,17 +1,15 @@
 {
   "name": "lytic",
   "version": "0.3.0",
-  "description": "",
+  "author": "&yet",
+  "dependencies": {},
+  "devDependencies": {
+    "lab": "1.8.0",
+    "sinon": "^1.9.1"
+  },
+  "license": "",
   "main": "lytic.js",
   "scripts": {
     "test": "lab"
-  },
-  "author": "&yet",
-  "license": "",
-  "devDependencies": {
-    "lab": "1.8.0"
-  },
-  "dependencies": {
-    "sinon": "^1.9.1"
   }
 }
