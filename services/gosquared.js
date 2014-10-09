@@ -1,5 +1,5 @@
+/* global _gs */
 var tracking = require('../lytic');
-var _gs = require('./libs/gosquared-preamble.js');
 
 /*
  * Mixpanel, configuration:
@@ -11,6 +11,8 @@ var _gs = require('./libs/gosquared-preamble.js');
  */
 
 module.exports.configure = function (config) {
+    require('./libs/gosquared-preamble.js').init();
+
     var autoTrack;
 
     if (typeof config.autoTrack === 'undefined') {
@@ -21,8 +23,12 @@ module.exports.configure = function (config) {
 
     _gs(config.key, autoTrack);
 
+    if (config.trackLocal) {
+        _gs('set', 'trackLocal', true);
+    }
+
     if (config.cookieDomain) {
-        _gs('cookieDomain', config.cookieDomain);
+        _gs('set', 'cookieDomain', config.cookieDomain);
     }
 
     var identify = function (userId, userData) {
@@ -31,6 +37,7 @@ module.exports.configure = function (config) {
     };
 
     var pageView = function (url, title) {
+        console.log('Tracking', url, title);
         _gs('track', url, title);
     };
 
