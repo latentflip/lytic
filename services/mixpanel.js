@@ -1,6 +1,6 @@
+/* global mixpanel */
 var tracking = require('../lytic');
 require('./libs/mixpanel-preamble');
-var mixpanel = window.mixpanel;
 
 /*
  * Mixpanel, configuration:
