@@ -37,7 +37,6 @@ module.exports.configure = function (config) {
     };
 
     var pageView = function (url, title) {
-        console.log('Tracking', url, title);
         _gs('track', url, title);
     };
 
