@@ -2,7 +2,7 @@ var tracking = require('../lytic');
 var fullstoryPreamble = require('./libs/fullstory-preamble');
 
 module.exports.configure = function (config) {
-    fullstoryPreamble.init(config.org);
+    fullstoryPreamble.init(config);
 
     var identify = function (userId, userData) {
         FS.identify(userId, userData || {});
