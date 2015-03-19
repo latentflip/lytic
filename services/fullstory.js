@@ -1,8 +1,8 @@
 var tracking = require('../lytic');
-var fullstoryPreamble = require('../libs/fullstory-preamble');
+var fullstoryPreamble = require('./libs/fullstory-preamble');
 
 module.exports.configure = function (config) {
-    var fullstoryPreamble.init(config.org);
+    fullstoryPreamble.init(config.org);
 
     var identify = function (userId, userData) {
         FS.identify(userId, userData || {});
@@ -11,4 +11,4 @@ module.exports.configure = function (config) {
     tracking._addTracker('fullstory', {
         identify: identify
     });
-});
+};
